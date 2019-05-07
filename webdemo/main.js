@@ -11,7 +11,7 @@ async function runREST() {
   const LukeURI = "https://swapi.co/api/people/1/";
   const character = await fetchObject(LukeURI);
   const films = await fetchAll(character.films);
-  const allCharacterURIs = films.map(film => film.characters).flat();
+  const allCharacterURIs = flatten(films.map(film => film.characters));
   const uniqueCharacterURIs = unique(allCharacterURIs);
   const uniqueCharacters = await fetchAll(uniqueCharacterURIs);
   const allCharNames = uniqueCharacters
@@ -38,7 +38,7 @@ async function runGraphQL() {
   );
 
   const films = data.person.films;
-  const allCharacters = films.map(film => film.characters).flat();
+  const allCharacters = flatten(films.map(film => film.characters));
   const allCharacterNames = allCharacters.map(c => c.name);
   const names = unique(allCharacterNames)
     .sort()

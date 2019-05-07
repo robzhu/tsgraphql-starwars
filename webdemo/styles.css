@@ -11,17 +11,17 @@ button {
   font-size: 2rem;
 }
 
-h2 {
-  margin-top: 1em;
-  padding-top: 1em;
-}
-
 h1,
 h2,
 strong {
+  margin-bottom: 0;
   color: #333;
 }
 
 a {
   color: #e81c4f;
+}
+
+p {
+  margin: 0;
 }

@@ -23,3 +23,12 @@ async function fetchGraphQL(endpoint, query) {
 function unique(array) {
   return [...new Set(array)];
 }
+
+// array.flat() not supported on all browsers
+function flatten(arrayOfArrays) {
+  let res = [];
+  for (let inner of arrayOfArrays) {
+    res.push(...inner);
+  }
+  return res;
+}
