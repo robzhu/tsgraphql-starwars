@@ -21,3 +21,13 @@ PORT=5000
 ```
 
 This will cause the GraphQL server to start at http://localhost:5000
+
+## More GraphQL Resources
+
+- https://graphql.org
+- https://aws.amazon.com/appsync
+- https://www.apollographql.com/
+- https://www.prisma.io/
+- https://hasura.io/
+- https://github.com/robzhu/tsgraphql-starter
+
