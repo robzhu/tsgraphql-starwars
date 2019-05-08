@@ -32,3 +32,47 @@ function flatten(arrayOfArrays) {
   }
   return res;
 }
+
+let latencyREST = undefined;
+let latencyGraphQL = undefined;
+
+async function benchmark(action) {
+  const before = performance.now();
+  await action();
+  const after = performance.now();
+  return Math.round(after - before);
+}
+
+async function benchmarkREST() {
+  latencyREST = await benchmark(runREST);
+  if (!latencyGraphQL) width = 100;
+  else {
+    if (latencyREST > latencyGraphQL) {
+      width = 100;
+      document.getElementById("graphql").style = `width: ${latencyGraphQL / latencyREST * 100}%`;
+    }
+    else {
+      width = latencyREST / latencyGraphQL * 100;
+      document.getElementById("graphql").style = `width: 100%`;
+    }
+  }
+  document.getElementById("rest").style = `width: ${width}%`;
+  document.getElementById("rest-latency").innerText = `${latencyREST}ms`;
+}
+
+async function benchmarkGraphQL() {
+  latencyGraphQL = await benchmark(runGraphQL);
+  if (!latencyREST) width = 100;
+  else {
+    if (latencyGraphQL > latencyREST) {
+      width = 100;
+      document.getElementById("rest").style = `width: ${latencyREST / latencyGraphQL * 100}%`;
+    }
+    else {
+      width = latencyGraphQL / latencyREST * 100;
+      document.getElementById("rest").style = `width: 100%`;
+    }
+  }
+  document.getElementById("graphql").style = `width: ${width}%`;
+  document.getElementById("graphql-latency").innerText = `${latencyGraphQL}ms`;
+}

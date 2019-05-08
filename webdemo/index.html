@@ -9,8 +9,11 @@
 
 <body>
   <h1>Hello London!</h1>
-  <h2>I've prepared a demo of GraphQL</h2>
-  <p><a href="https://github.com/robzhu/tsgraphql-starwars/tree/master/webdemo" target="_blank">source for this page</a>
+  <h2>Fetch the names of all Star Wars characters that appeared in movies with Luke Skywalker</h2>
+  <p>
+    <a href="https://github.com/robzhu/tsgraphql-starwars/blob/master/webdemo/main.js" target="_blank">
+      source for this page
+    </a>
   </p>
   <h1>
     <a href="https://swapi.co" target="_blank">Star Wars REST API</a>
@@ -19,16 +22,23 @@
     <a href="https://rzswapi.ngrok.io/" target="_blank">Star Wars GraphQL API</a>
   </h1>
   <p><a href="https://github.com/robzhu/tsgraphql-starwars" target="_blank">source</a></p>
-  <h2>Fetch the names of all Star Wars characters that appeared in movies with Luke Skywalker</h2>
+
+  <div class="spacer"></div>
+
   <div>
-    <button onclick="benchmark('REST', runREST)">
+    <button onclick="benchmarkREST()">
       Fetch with REST
     </button>
-    <button onclick="benchmark('GraphQL', runGraphQL)">
+    <div class="perfbar" id="rest">
+      <p class="vertical-center" id="rest-latency"></p>
+    </div>
+
+    <button onclick="benchmarkGraphQL()">
       Fetch with GraphQL
     </button>
-
-    <h2 id="benchmark"></h2>
+    <div class="perfbar" id="graphql">
+      <p class="vertical-center" id="graphql-latency"></p>
+    </div>
     <p id="names">
     </p>
   </div>

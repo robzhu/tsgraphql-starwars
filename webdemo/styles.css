@@ -9,6 +9,8 @@ body {
 
 button {
   font-size: 2rem;
+  width: 24rem;
+  text-align: left;
 }
 
 h1,
@@ -24,4 +26,36 @@ a {
 
 p {
   margin: 0;
+}
+
+.spacer {
+  height: 4rem;
+}
+
+.perfbar {
+  height: 2rem;
+  width: 0%;
+  vertical-align: middle;
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 0rem;
+}
+
+#rest {
+  background: #52a8ff;
+}
+
+#graphql {
+  background: #ff5050;
+}
+
+.vertical-center {
+  padding-left: 1rem;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

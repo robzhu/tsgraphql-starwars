@@ -1,12 +1,3 @@
-async function benchmark(name, action) {
-  const before = performance.now();
-  await action();
-  const after = performance.now();
-  document.getElementById("benchmark").innerText = `${name} took ${Math.round(
-    after - before
-  )}ms`;
-}
-
 async function runREST() {
   const LukeURI = "https://swapi.co/api/people/1/";
   const character = await fetchObject(LukeURI);
