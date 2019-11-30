@@ -13,14 +13,16 @@ npm run watch
 
 ## DotEnv
 
-To use a custom port, place a .env file at the root of the project:
+You need to create a .env file at the root of the project with the following entries:
 
 ```
 #.env
-PORT=5000
+GRAPHQLPORT=8000
+RESTPORT=9000
+HOSTNAME="localhost"
 ```
 
-This will cause the GraphQL server to start at http://localhost:5000
+This will run the GraphQL server at http://localhost:8000 and the REST API at http://localhost:9000
 
 ## More GraphQL Resources
 
@@ -30,4 +32,3 @@ This will cause the GraphQL server to start at http://localhost:5000
 - https://www.prisma.io/
 - https://hasura.io/
 - https://github.com/robzhu/tsgraphql-starter
-

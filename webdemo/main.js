@@ -1,5 +1,6 @@
 async function runREST() {
-  const LukeURI = "https://swapi.co/api/people/1/";
+  // This value will be rewritten by demo.ts
+  const LukeURI = REPLACEME;
   const character = await fetchObject(LukeURI);
   const films = await fetchAll(character.films);
   const allCharacterURIs = flatten(films.map(film => film.characters));
@@ -13,7 +14,8 @@ async function runREST() {
 }
 
 async function runGraphQL() {
-  const GraphQLEndpoint = "https://rzswapi.ngrok.io/";
+  // This value will be rewritten by demo.ts
+  const GraphQLEndpoint = REPLACEME;
   const { data } = await fetchGraphQL(
     GraphQLEndpoint,
     `{

@@ -6,23 +6,26 @@ import { Starship } from "./types/Starship";
 import { Species } from "./types/Species";
 
 const originalPrefix = "https://swapi.co";
-const newPrefix = "http://localhost:8080";
+const { HOSTNAME, RESTPORT } = process.env;
+const newHostname = `http://${HOSTNAME}:${RESTPORT}`;
 
 // The original data set was scraped from swapi.co. We fix the URLs
 // here so that the links are not broken.
 function fixUrls(path: string) {
   const records = require(path) as Array<any>;
+  if (!HOSTNAME) return records;
+
   for (let record of records) {
     for (let propName of Object.getOwnPropertyNames(record)) {
       let value = record[propName];
       if (typeof value === "string") {
-        record[propName] = value.replace(originalPrefix, newPrefix);
+        record[propName] = value.replace(originalPrefix, newHostname);
       }
 
       if (value instanceof Array) {
         record[propName] = value.map(item =>
           typeof item === "string"
-            ? item.replace(originalPrefix, newPrefix)
+            ? item.replace(originalPrefix, newHostname)
             : item
         );
       }

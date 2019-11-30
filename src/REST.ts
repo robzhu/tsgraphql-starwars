@@ -7,6 +7,7 @@ import {
   planets,
   species
 } from "./records";
+import { configureDemo } from "./demo";
 
 function sendMaybeFound(response: express.Response, resource: any) {
   if (resource) {
@@ -40,5 +41,6 @@ export function createRESTServer() {
   configureRoute("planets", planets);
   configureRoute("species", species);
 
+  configureDemo(app);
   return app;
 }

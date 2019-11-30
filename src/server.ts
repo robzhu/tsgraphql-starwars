@@ -4,6 +4,7 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
 import { buildAppSchema } from "./schema";
 import { createRESTServer } from "./rest";
+import { RESTEndpoint, RESTPORT, GRAPHQLPORT } from "./endpoints";
 
 process.on("SIGINT", () => {
   console.log("Shutting down...");
@@ -15,12 +16,12 @@ process.on("SIGINT", () => {
     schema: await buildAppSchema()
   });
 
-  const { url } = await server.listen(process.env.PORT || 80);
+  const { url } = await server.listen(GRAPHQLPORT);
   console.log(`GraphQL server running on ${url}`);
 
-  // Note: 8080 is hardcoded in records.ts. If you change the port number here,
-  // also updated records.ts.
-  createRESTServer().listen(8080, () =>
-    console.log(`REST API started, open http://localhost:8080/api/people/1`)
-  );
+  createRESTServer().listen(RESTPORT, () => {
+    const fullHost = RESTEndpoint();
+    console.log(`REST API started, open ${fullHost}/api/people/1`);
+    console.log(`Web demo started at ${fullHost}`);
+  });
 })();
