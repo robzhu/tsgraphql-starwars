@@ -3,8 +3,13 @@ require("dotenv").config();
 import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
 import { buildAppSchema } from "./schema";
-import { createRESTServer } from "./rest";
-import { RESTEndpoint, RESTPORT, GRAPHQLPORT } from "./endpoints";
+import { createRESTServer } from "./REST";
+import {
+  RESTEndpoint,
+  RESTPORT,
+  GRAPHQLPORT,
+  GraphQLEndpoint
+} from "./endpoints";
 
 process.on("SIGINT", () => {
   console.log("Shutting down...");
@@ -16,8 +21,8 @@ process.on("SIGINT", () => {
     schema: await buildAppSchema()
   });
 
-  const { url } = await server.listen(GRAPHQLPORT);
-  console.log(`GraphQL server running on ${url}`);
+  await server.listen(GRAPHQLPORT);
+  console.log(`GraphQL server running on ${GraphQLEndpoint()}`);
 
   createRESTServer().listen(RESTPORT, () => {
     const fullHost = RESTEndpoint();
