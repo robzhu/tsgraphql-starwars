@@ -4,16 +4,15 @@ import { Film } from "./types/Film";
 import { Vehicle } from "./types/Vehicle";
 import { Starship } from "./types/Starship";
 import { Species } from "./types/Species";
+import { RESTEndpoint } from "./endpoints";
 
 const originalPrefix = "https://swapi.co";
-const { HOSTNAME, RESTPORT } = process.env;
-const newHostname = `http://${HOSTNAME}:${RESTPORT}`;
+const newHostname = RESTEndpoint;
 
 // The original data set was scraped from swapi.co. We fix the URLs
 // here so that the links are not broken.
 function fixUrls(path: string) {
   const records = require(path) as Array<any>;
-  if (!HOSTNAME) return records;
 
   for (let record of records) {
     for (let propName of Object.getOwnPropertyNames(record)) {

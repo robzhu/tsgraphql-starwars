@@ -11,6 +11,7 @@
   "author": "",
   "dependencies": {
     "apollo-server": "^2.4.8",
+    "apollo-server-express": "^2.9.12",
     "dotenv": "^7.0.0",
     "graphql": "^14.2.1",
     "reflect-metadata": "^0.1.13",
