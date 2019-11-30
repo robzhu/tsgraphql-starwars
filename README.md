@@ -13,16 +13,15 @@ npm run watch
 
 ## DotEnv
 
-You need to create a .env file at the root of the project with the following entries:
+By default, the server will run on localhost:80. To modify, you need to create a .env file at the root of the project with the following entries:
 
 ```
 #.env
-GRAPHQLPORT=8000
-RESTPORT=9000
-HOSTNAME="localhost"
+PORT=8080
+HOSTNAME="demo.com"
 ```
 
-This will run the GraphQL server at http://localhost:8000 and the REST API at http://localhost:9000
+This will run the demo at http://localhost:8080
 
 ## More GraphQL Resources
 
