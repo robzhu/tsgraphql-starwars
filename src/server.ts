@@ -16,8 +16,6 @@ process.on("SIGINT", () => {
     schema: await buildAppSchema()
   });
 
-  // await server.listen(GRAPHQLPORT);
-
   const app = createRESTServer();
   server.applyMiddleware({
     app,
