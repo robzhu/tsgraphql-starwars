@@ -11,7 +11,7 @@
   },
   "author": "",
   "dependencies": {
-    "apollo-server": "^2.4.8",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.9.12",
     "dotenv": "^7.0.0",
     "graphql": "^14.5.8",
