@@ -12,7 +12,7 @@ import { configureDemo } from "./demo";
 function sendMaybeFound(response: express.Response, resource: any) {
   if (resource) {
     response.status(200);
-    response.send(JSON.stringify(resource, null, 2));
+    response.send(resource);
   } else {
     response.status(404);
     response.send("not found");
